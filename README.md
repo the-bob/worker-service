@@ -12,6 +12,13 @@ docker push ptc/worker-service:0.0.1-SNAPSHOT
 ```
 > The example above assumes that the registry exists and should update the version as needed 
 
+## Additional work
+* Update `Dockerfile` to include `--worker.blob.net=<REAL_END_POINT_URL>` 
+```
+ENTRYPOINT ["java","-jar","/app.jar", "--worker.blob.net=${ENDPOINT_URL}"]
+```
+* Update `build.gradle` to include `--build-arg ENDPOINT_URL=<url>`
+
 ## Adding to Kubernetes yaml
 The Example from https://docs.docker.com/get-started/kube-deploy/
 ```
