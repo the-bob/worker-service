@@ -18,6 +18,7 @@ docker push ptc/worker-service:0.0.1-SNAPSHOT
 ENTRYPOINT ["java","-jar","/app.jar", "--worker.blob.net=${ENDPOINT_URL}"]
 ```
 * Update `build.gradle` to include `--build-arg ENDPOINT_URL=<url>`
+* Additional work in regards to authentication of the jwt headers, possibly add in springboot interceptors/handlers for security
 
 ## Adding to Kubernetes yaml
 The Example from https://docs.docker.com/get-started/kube-deploy/
