@@ -1,0 +1,33 @@
+
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'groovy'
+	id 'eclipse'
+}
+
+group = 'com.ptc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'com.auth0:java-jwt:3.13.0'
+	implementation 'org.codehaus.groovy:groovy'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+task buildDocker() {
+	exec {
+		commandLine 'docker', 'build', '.', '' 
+	}
+}
