@@ -27,7 +27,11 @@ test {
 }
 
 task buildDocker() {
-	exec {
-		commandLine 'docker', 'build', '.', '' 
+	doLast {
+		exec {
+			commandLine 'docker', 'build', '--build-arg', 'JAR_FILE=./build/libs/ptc-worker-0.0.1-SNAPSHOT.jar', '.', '-t', "ptc/worker-service:${version}"
+		}
 	}
 }
+
+project.tasks.buildDocker.dependsOn assemble
